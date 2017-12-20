@@ -1,0 +1,26 @@
+{% extends 'hobby/base.html' %}
+
+{% block title%}
+Add hobby Item
+{% endblock %}
+
+{% block content %}
+<div class = "container">
+
+	<form method="post">
+	    {% csrf_token %} 
+	    {{ form.as_p }}
+	    <button type="submit">Submit</button>
+	</form>
+
+	<h3>Existing Items</h3>
+	<ul>
+		{% for hobbyitem in hobbyitems %}
+			<li><p>{{ hobbyitem.hobbyitem_disc}} - {{ hobbyitem.hobbyitem_title}} </p></li>
+		{% endfor %}
+	</ul>
+	
+		
+</div>
+{% endblock %}
+

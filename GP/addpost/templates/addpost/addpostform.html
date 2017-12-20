@@ -1,0 +1,28 @@
+{% extends 'hobby/base.html' %}
+{% block title%}
+Add New Blog
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class = "container">
+
+	<form method="post">
+	    {% csrf_token %} 
+	    {{ form.as_p }}
+	    <button type="submit">Submit</button>
+	</form>
+	<h3>Existing Blog</h3>
+	<ul>
+		{% for blog in blogs %}
+			<li><p><a href="http://127.0.0.1:8000/addpost/bloglist/{{blog.slug}}">{{ blog.hobbyitem}} - {{ blog.title}}</a></p></li>
+		{% endfor %}
+	</ul>
+	
+		
+</div>
+
+{% endblock %}
+

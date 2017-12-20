@@ -1,0 +1,25 @@
+{% extends 'hobby/base.html' %}
+
+{% block title%}
+Add hobby Cat
+{% endblock %}
+
+{% block content %}
+<div class = "container">
+
+	<form method="post">
+	    {% csrf_token %} 
+	    {{ form.as_p }}
+	    <button type="submit">Submit</button>
+	</form>
+	<h3>Existing Cat</h3>
+	<ul>
+		{% for hobbycat in hobbycats %}
+			<li><p>{{ hobbycat.hobbycat_disc}} - {{ hobbycat.hobbycat_title}} - {{ hobbycat.hobbycat_logo }}</p></li>
+		{% endfor %}
+	</ul>
+	
+		
+</div>
+{% endblock %}
+

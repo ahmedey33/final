@@ -1,0 +1,23 @@
+{% extends 'hobby/base.html' %}
+
+{% block title %}
+Detail
+{% endblock %}
+
+{% block content %}
+
+ 
+        <h3>Blog Title: {{blog.title}}</h3><br>
+<table>
+  
+        <tr><b>Description:</b>{{blog.description}}</tr><br><br>
+        <tr><b>Content:</b><P>{{blog.content}}</P></tr><br><br>
+        <br><img width="200" height="200" src="{{blog.link}}">
+
+</table>
+
+<span class="date"><a href="/blog/arctic"><time class="published" datetime="2017-12-03" itemprop="datePublished">{{blog.created_date}}</time></a></span>
+<span class="author"><a href="/?author=52480903e4b03b8157cc8014" rel="author">{{request.user.username}}</a></span>
+
+{% endblock %}
+

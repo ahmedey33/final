@@ -1,0 +1,18 @@
+{% extends 'hobby/base.html' %}
+
+{% block title %}
+    Hobby
+{% endblock %}
+
+
+{% block content %}
+    <!--Page content-->
+    <h3>Here are all my Hobbys:</h3>
+       <ul>
+        {% for hobbycat in all_hobbycats %} 
+            <li><a href="{% url 'hobby:detail' hobbycat.id %}">{{ hobbycat.hobbycat_title }}</a>
+                <br><img width="200" height="200" src="{{ hobbycat.hobbycat_logo }}">
+            </li>
+        {% endfor %}   
+    </ul>
+{% endblock %}

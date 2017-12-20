@@ -1,0 +1,23 @@
+{% extends 'hobby/base.html' %}
+
+{% block title%}
+Detail
+{% endblock %}
+
+{% block content %}
+
+<h3> {{hobbycat.hobbycat_title}} </h3>
+{#<h4> {{hobbycat.hobbycat_disc}} </h4>#}
+
+<ul>
+	{% for hobbyitem_item in hobbycat.hobbyitem_set.all %}
+	 <li><a href="http://127.0.0.1:8000/hobby/bloglist/{{hobbyitem_item.id}}">{{ hobbyitem_item.hobbyitem_title }}
+     <br><img width="200" height="200" src="{{ hobbyitem_item.hobbyitem_logo }}">
+	 </a>
+	{% endfor %}
+</ul>
+{% endblock %}
+	
+
+	
+	

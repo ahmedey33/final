@@ -1,0 +1,19 @@
+{% extends 'hobby/base.html' %}
+
+{% block title %}
+    Hobby
+{% endblock %}
+
+
+{% block content %}
+    <!--Page content-->
+    <h3>Existing Items</h3>
+    <ul>
+        {% for hobbyitem in hobbyitems %}
+            <li><p>{{ hobbyitem.hobbyitem_title }} </p>
+                 <br><img width="200" height="200" src="{{ hobbyitem.hobbyitem_logo }}">
+                <br>{{ hobbyitem.hobbyitem_dic }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

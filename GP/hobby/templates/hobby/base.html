@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>{% block title%} Hobby Blog {% endblock %}</title>
+    {% load staticfiles %}
+      <!--Bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!--Font-->
+      <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+      <!--Our CSS-->
+      <link rel = "stylesheet" type = "text/css" href="{% static 'hobby/style.css' %}">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+
+    <!--Navigation Bar-->
+    <nav class="navbar navbar-inverse "> 
+      <div class="container-fluid">
+
+        <!-- Header-->
+        <div class="navbar-header">
+
+          <!--Collapse Button-->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+            <span class="icon-bar"></span>  
+            <span class="icon-bar"></span>  
+            <span class="icon-bar"></span>  
+          </button>
+          
+          <!--Logo links to main page-->
+          <a class="navbar-brand" href="{% url 'hobby:hobbyindex' %}">Hobby Blog</a>
+        </div>
+        
+
+        <!--Other navigation bar items-->
+        <div class="collapse navbar-collapse" id="topNavBar">
+
+                    
+          <!--Logged in-->
+          <!--Left side-->
+          {% if user.is_authenticated %}
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="{% url 'hobby:hobbyindex'%}">
+                <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp;
+                Hobbys
+              </a>
+            </li>
+            <li class="">
+              <a href="">
+                <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;
+                Hobby Item
+              </a>
+            </li>
+          </ul>
+
+               <!--Right side-->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="{% url 'addhobby:addhobby'%}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                Add hobby Cat
+              </a>
+            </li>
+                <li class="">
+              <a href="{% url 'addhobbyitem:addhobbyitem'%}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                Add hobby Item
+              </a>
+            </li>
+             <li class="">
+              <a href="{% url 'addpost:addpost'%}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;
+                Add Post
+              </a>
+            </li>
+            <li class="">
+              <a href="">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
+                {{ request.user.username }}
+              </a>
+            </li>     
+            <li class="">
+              <a href="/account/logout">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
+                Logout
+              </a>
+            </li>       
+          </ul> 
+
+          {% else %}
+
+          <!--Not Logged in-->
+          <!--Left side-->
+
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="{% url 'hobby:hobbyindex'%}">
+                <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>&nbsp;
+                Hobbys
+              </a>
+            </li>
+            <li class="">
+              <a href="">
+                <span class="glyphicon glyphicon-music" aria-hidden="true"></span>&nbsp;
+                Hobby Item
+              </a>
+            </li>
+          </ul>
+
+          <!--Right side-->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="">
+              <a href="/account/login">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
+                Login
+              </a>
+            </li>
+            <li class="">
+              <a href="/account">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;
+                Register
+              </a>
+            </li>             
+          </ul>   
+
+          {% endif %}
+
+
+
+       
+        </div>
+      </div>  
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+  </body>
+</html>

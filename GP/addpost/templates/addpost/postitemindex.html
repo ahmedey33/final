@@ -1,0 +1,16 @@
+{% extends 'hobby/base.html' %}
+
+{% block title %}
+    Hobby
+{% endblock %}
+
+
+{% block content %}
+    <!--Page content-->
+    <h3>Blog Items</h3>
+    <ul>
+        {% for blogitem in blog %}
+            <li><p><a href="http://127.0.0.1:8000/addpost/bloglist/{{blogitem.slug}}">{{ blogitem.hobbyitem }} - {{ blogitem.title }} </p></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
